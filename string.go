@@ -4,10 +4,12 @@ import (
 	"strings"
 )
 
+// Str .
 var Str = &str{}
 
 type str struct{}
 
+// HasPrefixList .
 func (r *str) HasPrefixList(s string, prefixList ...string) bool {
 	for _, prefix := range prefixList {
 		if strings.HasPrefix(s, prefix) {
@@ -17,6 +19,7 @@ func (r *str) HasPrefixList(s string, prefixList ...string) bool {
 	return false
 }
 
+// CountPre .
 func (r *str) CountPre(s, substr string) int {
 	if s == "" || substr == "" {
 		return 0
@@ -27,6 +30,7 @@ func (r *str) CountPre(s, substr string) int {
 	return 0
 }
 
+// FindLastSubstr .
 func (r *str) FindLastSubstr(s, substr string) string {
 	if substr == "" {
 		return ""
