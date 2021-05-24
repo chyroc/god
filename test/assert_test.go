@@ -48,6 +48,20 @@ func (r *Assertion) False(value bool) {
 	}
 }
 
+// Nil .
+func (r *Assertion) Nil(err error) {
+	if err != nil {
+		r.Fail(r.t, fmt.Sprintf("%v should be nil", err))
+	}
+}
+
+// NotNil .
+func (r *Assertion) NotNil(err error) {
+	if err == nil {
+		r.Fail(r.t, fmt.Sprintf("%v should not be nil", err))
+	}
+}
+
 func Test_Assert(t *testing.T) {
 	as := NewAssert(t)
 	as.Fail = func(t TestingT, failureMessage string) {
