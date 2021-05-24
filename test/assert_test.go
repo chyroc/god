@@ -1,9 +1,11 @@
-package internal
+package test
 
 import (
 	"fmt"
 	"reflect"
+	"testing"
 )
+
 
 // TestingT .
 type TestingT interface {
@@ -45,4 +47,19 @@ func (r *Assertion) False(value bool) {
 	if value {
 		r.Fail(r.t, "Should be false")
 	}
+}
+
+
+func Test_Assert(t *testing.T) {
+	as := NewAssert(t)
+	as.Fail = func(t TestingT, failureMessage string) {
+	}
+
+	as.True(true)
+	as.False(true)
+	as.True(false)
+	as.False(false)
+	as.Fail(t, "fail")
+	as.Equal(1, 1)
+	as.Equal(1, 2)
 }

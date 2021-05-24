@@ -1,16 +1,11 @@
-package god
+package god_string
 
 import (
 	"strings"
 )
 
-// Str .
-var Str = &str{}
-
-type str struct{}
-
 // HasPrefixList .
-func (r *str) HasPrefixList(s string, prefixList ...string) bool {
+func HasPrefixList(s string, prefixList ...string) bool {
 	for _, prefix := range prefixList {
 		if strings.HasPrefix(s, prefix) {
 			return true
@@ -20,18 +15,18 @@ func (r *str) HasPrefixList(s string, prefixList ...string) bool {
 }
 
 // CountPre .
-func (r *str) CountPre(s, substr string) int {
+func CountPre(s, substr string) int {
 	if s == "" || substr == "" {
 		return 0
 	}
 	if strings.HasPrefix(s, substr) {
-		return r.CountPre(s[len(substr):], substr) + 1
+		return CountPre(s[len(substr):], substr) + 1
 	}
 	return 0
 }
 
 // FindLastSubstr .
-func (r *str) FindLastSubstr(s, substr string) string {
+func FindLastSubstr(s, substr string) string {
 	if substr == "" {
 		return ""
 	}
