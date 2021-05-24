@@ -31,8 +31,5 @@ func FindLastSubstr(s, substr string) string {
 		return ""
 	}
 	v := strings.Split(s, substr)
-	if len(v) == 0 {
-		return ""
-	}
-	return v[len(v)-1]
+	return v[len(v)-1] // assert: len must >= 1
 }

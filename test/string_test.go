@@ -1,6 +1,8 @@
 package test
 
 import (
+	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/chyroc/god/god_string"
@@ -71,4 +73,6 @@ func Test_FindLastSubstr(t *testing.T) {
 	as.Equal("", god_string.FindLastSubstr("/1/", "/"))
 	as.Equal("", god_string.FindLastSubstr("1/2/", "/"))
 	as.Equal("", god_string.FindLastSubstr("12/3/", "/"))
+
+	fmt.Println(strings.Split("", "1"), len(strings.Split("", "1")), strings.Split("", "1")[0])
 }

@@ -19,6 +19,22 @@ func Test_god_template_text(t *testing.T) {
 	})
 
 	t.Run("", func(t *testing.T) {
+		r := god_template.New("{{ .Name }}")
+		s, err := r.BuildMap(map[string]interface{}{
+			"name": "a",
+		})
+		as.Nil(err)
+		as.Equal("<no value>", s)
+	})
+
+	t.Run("", func(t *testing.T) {
+		r := god_template.New("{{ .Name }}")
+		s, err := r.BuildMap(nil)
+		as.Nil(err)
+		as.Equal("<no value>", s)
+	})
+
+	t.Run("", func(t *testing.T) {
 		r := god_template.New("{{ Name }}")
 		_, err := r.BuildMap(map[string]interface{}{
 			"Name": "a",
