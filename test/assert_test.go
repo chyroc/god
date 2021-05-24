@@ -6,7 +6,6 @@ import (
 	"testing"
 )
 
-
 // TestingT .
 type TestingT interface {
 	Errorf(format string, args ...interface{})
@@ -48,7 +47,6 @@ func (r *Assertion) False(value bool) {
 		r.Fail(r.t, "Should be false")
 	}
 }
-
 
 func Test_Assert(t *testing.T) {
 	as := NewAssert(t)
