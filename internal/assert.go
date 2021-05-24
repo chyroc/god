@@ -1,5 +1,10 @@
 package internal
 
+import (
+	"fmt"
+	"reflect"
+)
+
 type TestingT interface {
 	Errorf(format string, args ...interface{})
 }
@@ -21,6 +26,12 @@ func NewAssert(t TestingT) *Assertion {
 func (r *Assertion) True(value bool, ) {
 	if !value {
 		r.Fail(r.t, "Should be true")
+	}
+}
+
+func (r *Assertion) Equal(a, b interface{}) {
+	if !reflect.DeepEqual(a, b) {
+		r.Fail(r.t, fmt.Sprintf("%#v != %#v", a, b))
 	}
 }
 

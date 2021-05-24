@@ -14,4 +14,6 @@ func Test_Assert(t *testing.T) {
 	as.True(false)
 	as.False(false)
 	as.Fail(t, "fail")
+	as.Equal(1, 1)
+	as.Equal(1, 2)
 }
