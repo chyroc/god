@@ -27,3 +27,14 @@ func (r *str) CountPre(s, substr string) int {
 	}
 	return 0
 }
+
+func (r *str) FindLastSubstr(s, substr string) string {
+	if substr == "" {
+		return ""
+	}
+	v := strings.Split(s, substr)
+	if len(v) == 0 {
+		return ""
+	}
+	return v[len(v)-1]
+}

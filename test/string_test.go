@@ -39,3 +39,37 @@ func Test_CountPre(t *testing.T) {
 	as.Equal(int(0), god.Str.CountPre(".", ".."))
 	as.Equal(int(1), god.Str.CountPre("..", ".."))
 }
+
+func Test_FindLastSubstr(t *testing.T) {
+	as := internal.NewAssert(t)
+
+	as.Equal("", god.Str.FindLastSubstr("", ""))
+	as.Equal("", god.Str.FindLastSubstr("1", ""))
+	as.Equal("", god.Str.FindLastSubstr("12", ""))
+	as.Equal("", god.Str.FindLastSubstr("123", ""))
+
+	as.Equal("", god.Str.FindLastSubstr("", ""))
+	as.Equal("", god.Str.FindLastSubstr("", "1"))
+	as.Equal("", god.Str.FindLastSubstr("", "12"))
+	as.Equal("", god.Str.FindLastSubstr("", "123"))
+
+	as.Equal("", god.Str.FindLastSubstr("", "/"))
+	as.Equal("1", god.Str.FindLastSubstr("1", "/"))
+	as.Equal("12", god.Str.FindLastSubstr("12", "/"))
+	as.Equal("123", god.Str.FindLastSubstr("123", "/"))
+
+	as.Equal("", god.Str.FindLastSubstr("", "/"))
+	as.Equal("1", god.Str.FindLastSubstr("/1", "/"))
+	as.Equal("2", god.Str.FindLastSubstr("1/2", "/"))
+	as.Equal("3", god.Str.FindLastSubstr("12/3", "/"))
+
+	as.Equal("", god.Str.FindLastSubstr("", "/"))
+	as.Equal("1", god.Str.FindLastSubstr("x/x/1", "/"))
+	as.Equal("2", god.Str.FindLastSubstr("x/x//1/2", "/"))
+	as.Equal("3", god.Str.FindLastSubstr("x/x/x/x///12/3", "/"))
+
+	as.Equal("", god.Str.FindLastSubstr("", "/"))
+	as.Equal("", god.Str.FindLastSubstr("/1/", "/"))
+	as.Equal("", god.Str.FindLastSubstr("1/2/", "/"))
+	as.Equal("", god.Str.FindLastSubstr("12/3/", "/"))
+}
