@@ -6,8 +6,7 @@ import (
 
 var Str = &str{}
 
-type str struct {
-}
+type str struct{}
 
 func (r *str) HasPrefixList(s string, prefixList ...string) bool {
 	for _, prefix := range prefixList {

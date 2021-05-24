@@ -23,7 +23,7 @@ func NewAssert(t TestingT) *Assertion {
 	}
 }
 
-func (r *Assertion) True(value bool, ) {
+func (r *Assertion) True(value bool) {
 	if !value {
 		r.Fail(r.t, "Should be true")
 	}
@@ -35,7 +35,7 @@ func (r *Assertion) Equal(a, b interface{}) {
 	}
 }
 
-func (r *Assertion) False(value bool, ) {
+func (r *Assertion) False(value bool) {
 	if value {
 		r.Fail(r.t, "Should be false")
 	}
