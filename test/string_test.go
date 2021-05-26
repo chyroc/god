@@ -76,3 +76,35 @@ func Test_FindLastSubstr(t *testing.T) {
 
 	fmt.Println(strings.Split("", "1"), len(strings.Split("", "1")), strings.Split("", "1")[0])
 }
+
+func Test_TrimLeftRightWrap(t *testing.T) {
+	as := NewAssert(t)
+
+	as.Equal("", god_string.TrimLeftRightWrap("", "1"))
+	as.Equal("", god_string.TrimLeftRightWrap("", "12"))
+	as.Equal("", god_string.TrimLeftRightWrap("", ""))
+
+	as.Equal("", god_string.TrimLeftRightWrap("", ""))
+	as.Equal("1", god_string.TrimLeftRightWrap("1", ""))
+	as.Equal("12", god_string.TrimLeftRightWrap("12", ""))
+
+	as.Equal("", god_string.TrimLeftRightWrap("", ""))
+	as.Equal("x1", god_string.TrimLeftRightWrap("x1", "x"))
+	as.Equal("x12", god_string.TrimLeftRightWrap("x12", "x"))
+
+	as.Equal("", god_string.TrimLeftRightWrap("", ""))
+	as.Equal("1x", god_string.TrimLeftRightWrap("1x", "x"))
+	as.Equal("12x", god_string.TrimLeftRightWrap("12x", "x"))
+
+	as.Equal("", god_string.TrimLeftRightWrap("", ""))
+	as.Equal("1", god_string.TrimLeftRightWrap("x1x", "x"))
+	as.Equal("12", god_string.TrimLeftRightWrap("x12x", "x"))
+
+	as.Equal("", god_string.TrimLeftRightWrap("", ""))
+	as.Equal("1", god_string.TrimLeftRightWrap("xx1xx", "xx"))
+	as.Equal("12", god_string.TrimLeftRightWrap("xx12xx", "xx"))
+
+	as.Equal("", god_string.TrimLeftRightWrap("", ""))
+	as.Equal("x1x", god_string.TrimLeftRightWrap("xx1xx", "x"))
+	as.Equal("x12x", god_string.TrimLeftRightWrap("xx12xx", "x"))
+}

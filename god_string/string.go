@@ -14,6 +14,14 @@ func HasPrefixList(s string, prefixList ...string) bool {
 	return false
 }
 
+// TrimLeftRightWrap .
+func TrimLeftRightWrap(s, substr string) string {
+	if strings.HasPrefix(s, substr) && strings.HasSuffix(s, substr) {
+		s = s[len(substr) : len(s)-len(substr)]
+	}
+	return s
+}
+
 // CountPre .
 func CountPre(s, substr string) int {
 	if s == "" || substr == "" {
